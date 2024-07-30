@@ -1,5 +1,4 @@
-# Car Rental Service 
-
+# Library Management System
 REST API for a simple car rental service.
  
 ## Description
