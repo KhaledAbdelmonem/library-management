@@ -6,9 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PatronControllerIT extends BookBorrowBaseTestIT{
+public class PatronControllerIT extends LibraryBaseTestIT {
     @Test
     public void canRegisterPatron() throws Exception {
+
         final String NAME = "John Smith";
         final String EMAIL = "example@test.com";
         final String CITY = "NewYork";
@@ -16,8 +17,7 @@ public class PatronControllerIT extends BookBorrowBaseTestIT{
         final String ADDRESS = "21 2nd Street";
         final int AGE = 25;
 
-        PatronDTO patronDTO = registerPatron (NAME, EMAIL, CITY, PHONE, ADDRESS, AGE);
-        // get user from db
+        PatronDTO patronDTO = registerPatron(NAME, EMAIL, CITY, PHONE, ADDRESS, AGE);
 
         assertEquals(NAME, patronDTO.getName());
         assertEquals(EMAIL, patronDTO.getEmail());

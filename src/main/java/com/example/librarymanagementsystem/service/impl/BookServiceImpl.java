@@ -17,25 +17,25 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookRepo bookRepo;
 
-    public List<BookDTO> getAllBooks(){
+    public List<BookDTO> getAllBooks() {
         return BookDTO.listToDTO(bookRepo.findAll());
     }
 
-    public BookDTO getBook(Long id) throws Exception{
-        Book book =  bookRepo.findById(id).orElse(null);
-        if(book == null){
+    public BookDTO getBook(Long id) throws Exception {
+        Book book = bookRepo.findById(id).orElse(null);
+        if (book == null) {
             throw new ObjectNotFoundException("Book not found!");
         }
         return BookDTO.toDto(book);
     }
 
     public BookDTO saveBook(BookDTO bookDto) {
-       return BookDTO.toDto(bookRepo.save(BookDTO.toEntity(bookDto)));
+        return BookDTO.toDto(bookRepo.save(BookDTO.toEntity(bookDto)));
     }
 
-    public String deleteBook(Long id) throws Exception{
-        Book book =  bookRepo.findById(id).orElse(null);
-        if(book == null){
+    public String deleteBook(Long id) throws Exception {
+        Book book = bookRepo.findById(id).orElse(null);
+        if (book == null) {
             throw new ObjectNotFoundException("Book not found!");
         }
         bookRepo.deleteById(id);
@@ -43,12 +43,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDTO updateBook(BookDTO bookDto , Long bookId) throws Exception {
-        if (bookDto.getId() != null && bookDto.getId() != bookId ) {
+    public BookDTO updateBook(BookDTO bookDto, Long bookId) throws Exception {
+        if (bookDto.getId() != null && bookDto.getId() != bookId) {
             throw new MismatchedDataException("Mismatch book id!");
         }
-        Book book =  bookRepo.findById(bookId).orElse(null);
-        if(book == null){
+        Book book = bookRepo.findById(bookId).orElse(null);
+        if (book == null) {
             throw new ObjectNotFoundException("Book not found!");
         }
         bookDto.setId(bookId);

@@ -1,4 +1,5 @@
 package com.example.librarymanagementsystem.dto;
+
 import com.example.librarymanagementsystem.entity.Patron;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -36,8 +37,6 @@ public class PatronDTO {
     private LocalDateTime createdAt = LocalDateTime.now();
 
 
-
-
     public static PatronDTO toDto(Patron patron) {
         return PatronDTO.builder()
                 .id(patron.getId())
@@ -50,6 +49,7 @@ public class PatronDTO {
                 .createdAt(patron.getCreatedAt())
                 .build();
     }
+
     public static Patron toEntity(PatronDTO patronDto) {
         return Patron.builder()
                 .id(patronDto.getId())
@@ -62,7 +62,8 @@ public class PatronDTO {
                 .createdAt(patronDto.getCreatedAt())
                 .build();
     }
-    public static List<PatronDTO> listToDTO(List<Patron> patronList){
+
+    public static List<PatronDTO> listToDTO(List<Patron> patronList) {
         return patronList.stream().map(PatronDTO::toDto).toList();
     }
 }

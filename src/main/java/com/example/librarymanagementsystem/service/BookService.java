@@ -12,8 +12,8 @@ public interface BookService {
 
     public BookDTO saveBook(BookDTO bookDto);
 
-    public String deleteBook(Long id) throws Exception ;
+    public String deleteBook(Long id) throws Exception;
 
-    public BookDTO updateBook(BookDTO bookDto , Long bookId) throws Exception ;
+    public BookDTO updateBook(BookDTO bookDto, Long bookId) throws Exception;
 
 }

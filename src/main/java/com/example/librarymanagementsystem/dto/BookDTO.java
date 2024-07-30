@@ -1,4 +1,5 @@
 package com.example.librarymanagementsystem.dto;
+
 import com.example.librarymanagementsystem.entity.Book;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
@@ -34,7 +35,6 @@ public class BookDTO {
     private LocalDateTime createdAt = LocalDateTime.now();
 
 
-
     public static BookDTO toDto(Book book) {
         return BookDTO.builder()
                 .id(book.getId())
@@ -46,6 +46,7 @@ public class BookDTO {
                 .createdAt(book.getCreatedAt())
                 .build();
     }
+
     public static Book toEntity(BookDTO bookDto) {
         return Book.builder()
                 .id(bookDto.getId())
@@ -57,7 +58,8 @@ public class BookDTO {
                 .createdAt(bookDto.getCreatedAt())
                 .build();
     }
-    public static List<BookDTO> listToDTO(List<Book> bookList){
+
+    public static List<BookDTO> listToDTO(List<Book> bookList) {
         return bookList.stream().map(BookDTO::toDto).toList();
     }
 

@@ -20,23 +20,27 @@ public class BookController {
     private BookServiceImpl bookService;
 
     @GetMapping("/")
-    public List<BookDTO> getAllBooks(){
+    public List<BookDTO> getAllBooks() {
         return bookService.getAllBooks();
     }
+
     @GetMapping("/{id}")
     public BookDTO getBook(@PathVariable Long id) throws Exception {
         return bookService.getBook(id);
     }
+
     @PostMapping("/")
-    public ResponseEntity<BookDTO> saveBook(@RequestBody @Valid BookDTO bookDTO){
+    public ResponseEntity<BookDTO> saveBook(@RequestBody @Valid BookDTO bookDTO) {
         return new ResponseEntity<>(bookService.saveBook(bookDTO), HttpStatus.CREATED);
     }
+
     @DeleteMapping("/{id}")
-    public String deleteBook(@PathVariable Long id) throws Exception{
+    public String deleteBook(@PathVariable Long id) throws Exception {
         return bookService.deleteBook(id);
     }
+
     @PutMapping("/{id}")
     public BookDTO updateBook(@RequestBody @Valid BookDTO bookDTO, @PathVariable Long id) throws Exception {
-        return bookService.updateBook(bookDTO,id);
+        return bookService.updateBook(bookDTO, id);
     }
 }

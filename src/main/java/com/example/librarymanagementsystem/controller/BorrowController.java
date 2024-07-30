@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/")
 public class BorrowController {
 
-   @Autowired BorrowingRecordServiceImpl borrowingService;
+    @Autowired
+    BorrowingRecordServiceImpl borrowingService;
 
-   @PostMapping("borrow/{bookId}/patron/{patronId}")
+    @PostMapping("borrow/{bookId}/patron/{patronId}")
     public String borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) throws Exception {
-        return borrowingService.borrowBook( bookId , patronId );
+        return borrowingService.borrowBook(bookId, patronId);
     }
 
     @PutMapping("return/{bookId}/patron/{patronId}")
-    public String returnBook (@PathVariable Long bookId, @PathVariable Long patronId, @RequestBody @Valid  BorrowingRecordDTO recordDTO) throws Exception{
-        return borrowingService.returnBook( bookId , patronId , recordDTO );
+    public String returnBook(@PathVariable Long bookId, @PathVariable Long patronId, @RequestBody @Valid BorrowingRecordDTO recordDTO) throws Exception {
+        return borrowingService.returnBook(bookId, patronId, recordDTO);
     }
 
 

@@ -20,13 +20,13 @@ public class PatronServiceImpl implements PatronService {
     @Autowired
     private PatronRepo patronRepo;
 
-    public List<PatronDTO> getAllPatrons(){
+    public List<PatronDTO> getAllPatrons() {
         return PatronDTO.listToDTO(patronRepo.findAll());
     }
 
     public PatronDTO getPatron(Long id) throws Exception {
         Patron patron = patronRepo.findById(id).orElse(null);
-        if(patron == null){
+        if (patron == null) {
             throw new ObjectNotFoundException("Patron not found!");
         }
         return PatronDTO.toDto(patron);
@@ -37,9 +37,9 @@ public class PatronServiceImpl implements PatronService {
     }
 
 
-    public String deletePatron (Long id) throws Exception{
+    public String deletePatron(Long id) throws Exception {
         Patron patron = patronRepo.findById(id).orElse(null);
-        if(patron == null){
+        if (patron == null) {
             throw new ObjectNotFoundException("Patron not found!");
         }
         patronRepo.deleteById(id);
@@ -48,11 +48,11 @@ public class PatronServiceImpl implements PatronService {
 
     @Override
     public PatronDTO updatePatron(PatronDTO patronDTO, Long patronId) throws Exception {
-        if (patronDTO.getId() != null && patronDTO.getId() != patronId  ) {
+        if (patronDTO.getId() != null && patronDTO.getId() != patronId) {
             throw new MismatchedDataException("Mismatch Patron id!");
         }
-        Patron patron =  patronRepo.findById(patronId).orElse(null);
-        if(patron == null){
+        Patron patron = patronRepo.findById(patronId).orElse(null);
+        if (patron == null) {
             throw new ObjectNotFoundException("Patron not found!");
         }
         patronDTO.setId(patronId);

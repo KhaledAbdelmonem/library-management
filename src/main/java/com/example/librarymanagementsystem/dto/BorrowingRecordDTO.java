@@ -1,4 +1,5 @@
 package com.example.librarymanagementsystem.dto;
+
 import com.example.librarymanagementsystem.entity.BorrowingRecord;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Builder
 @AllArgsConstructor
 @Data
@@ -35,6 +37,7 @@ public class BorrowingRecordDTO {
                 .createdAt(borrowingRecord.getCreatedAt())
                 .build();
     }
+
     public static BorrowingRecord toEntity(BorrowingRecordDTO borrowingRecordDTO) {
         return BorrowingRecord.builder()
                 .id(borrowingRecordDTO.getId())
@@ -44,7 +47,8 @@ public class BorrowingRecordDTO {
                 .createdAt(borrowingRecordDTO.getCreatedAt())
                 .build();
     }
-    public static List<BorrowingRecordDTO> listToDTO(List<BorrowingRecord> borrowingRecords){
+
+    public static List<BorrowingRecordDTO> listToDTO(List<BorrowingRecord> borrowingRecords) {
         return borrowingRecords.stream().map(BorrowingRecordDTO::toDto).toList();
     }
 

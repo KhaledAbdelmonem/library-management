@@ -27,11 +27,11 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
 
     @Override
     @Transactional
-    public String borrowBook(Long bookId, Long patronId) throws Exception{
+    public String borrowBook(Long bookId, Long patronId) throws Exception {
 
         BookDTO bookDto = bookService.getBook(bookId);
         PatronDTO patronDto = patronService.getPatron(patronId);
-        if(bookDto.isBorrowed()){
+        if (bookDto.isBorrowed()) {
             throw new ObjectNotFoundException("Book is already borrowed!");
         }
         bookDto.setBorrowed(true);
@@ -46,16 +46,15 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
 
         return "Book borrowed Successfully";
     }
+
     @Transactional
     @Override
     public String returnBook(Long bookId, Long patronId, BorrowingRecordDTO borrowDTO) throws Exception {
 
         BookDTO bookDto = bookService.getBook(bookId);
         PatronDTO patronDto = patronService.getPatron(patronId);
-        BorrowingRecord borrowingRecord = borrowingRecordRepo.findByBookAndPatronAndReturnDateIsNull(
-                                                               BookDTO.toEntity(bookDto),
-                                                               PatronDTO.toEntity(patronDto)).orElse(null);
-        if(borrowingRecord == null){
+        BorrowingRecord borrowingRecord = borrowingRecordRepo.findByBookAndPatronAndReturnDateIsNull(BookDTO.toEntity(bookDto), PatronDTO.toEntity(patronDto)).orElse(null);
+        if (borrowingRecord == null) {
             throw new ObjectNotFoundException("Book is not borrowed");
         }
         bookDto.setBorrowed(false);

@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface BorrowingRecordService {
 
-    public String borrowBook(Long bookId,Long patronId) throws Exception;
+    public String borrowBook(Long bookId, Long patronId) throws Exception;
 
-    public String returnBook (Long bookId,Long patronId,BorrowingRecordDTO recordDTO) throws Exception;
+    public String returnBook(Long bookId, Long patronId, BorrowingRecordDTO recordDTO) throws Exception;
 
 }

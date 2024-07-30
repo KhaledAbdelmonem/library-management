@@ -9,16 +9,16 @@ import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
-public class BookControllerIT extends BookBorrowBaseTestIT{
+public class BookControllerIT extends LibraryBaseTestIT {
     @Test
     public void canRegisterBook() throws Exception {
+
         final String AUTHOR = "Marijn Haverbeke";
         final String TITLE = "Eloquent JavaScript, Third Edition";
         final String ISBN = "9781593279509";
         final LocalDate PUBLISHER_DATE = LocalDate.of(2018, 4, 12);
 
-        BookDTO bookDTO = registerBook (AUTHOR, TITLE, ISBN,PUBLISHER_DATE);
-        // get user from db
+        BookDTO bookDTO = registerBook(AUTHOR, TITLE, ISBN, PUBLISHER_DATE);
 
         assertEquals(TITLE, bookDTO.getTitle());
         assertEquals(AUTHOR, bookDTO.getAuthor());
